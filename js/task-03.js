@@ -21,15 +21,9 @@ ulEl.style.display = "flex";
 ulEl.style.alignItems = "flex-start";
 ulEl.style.justifyContent = "space-around";
 
-const createListItem = images.map((image) => {
-  const liEl = document.createElement("li");
-  liEl.style.listStyle = "none";
-  liEl.insertAdjacentHTML(
-    "afterbegin",
-    `<img src= '${image.url}' alt='${image.alt}' width='500px' '
-height = 300'>`
-  );
-  return liEl;
+const createListItem = images.map(({ alt, url }) => {
+  return `<img src= '${url}' alt='${alt}' width='500px'
+  height='300px'>`;
 });
 
-ulEl.append(...createListItem);
+ulEl.insertAdjacentHTML("afterbegin", createListItem.join(""));
